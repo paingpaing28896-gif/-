@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Embed - တစ်ခုချင်းကြည့်ရန်</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --vip-gradient: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+        }
+
+        body {
+            font-family: 'Pyidaungsu', sans-serif, system-ui;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #1a202c;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* VIP ကြော်ငြာအတွက် ဒီဇိုင်းအသစ် */
+        .vip-banner {
+            background: var(--vip-gradient);
+            color: white;
+            width: 100%;
+            max-width: 950px;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(241, 39, 17, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 5px 15px rgba(241, 39, 17, 0.3); }
+            100% { box-shadow: 0 10px 30px rgba(241, 39, 17, 0.6); }
+        }
+
+        .vip-banner h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .vip-banner p {
+            margin: 0 0 15px 0;
+            font-size: 15px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .vip-btn {
+            background: #ffffff;
+            color: #d32f2f;
+            padding: 10px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .vip-btn:hover {
+            background: #1a202c;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu-card h3 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* သီးသန့်အရောင်များအတွက် ကာလတ်ခ်များ */
+        .btn-site1 { background: linear-gradient(135deg, #3498db, #2980b9); box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4); }
+        .btn-site2 { background: linear-gradient(135deg, #2ecc71, #27ae60); box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
+        .btn-site3 { background: linear-gradient(135deg, #e67e22, #d35400); box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4); }
+        .btn-site4 { background: linear-gradient(135deg, #e74c3c, #c0392b); box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+        .btn-site5 { background: linear-gradient(135deg, #9b59b6, #8e44ad); box-shadow: 0 4px 15px rgba(155, 89, 182, 0.4); }
+
+        .view-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            z-index: 1000;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .view-header {
+            display: flex;
+            align-items: center;
+            background-color: #1a202c;
+            color: white;
+            padding: 12px 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .view-header span {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .view-body {
+            flex: 1;
+            width: 100%;
+        }
+
+        .view-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ပျော်ပျော်ကြီး အမှောင်ကမ္ဘာ</h2>
+    
+    <!-- VIP ကြော်ငြာကတ် (Modern Banner) -->
+    <div class="vip-banner">
+        <h3>🔥 VIP အထူးအစီအစဉ် 🔥</h3>
+        <p>ဒီထက်မိုက်သော အမိုက်စားများဖြစ်ကြသော TikTok အကိတ်၊ အငယ်လေးကျောင်းသူတို့ရဲ့ ပေါက်ကြားမှုများကို ကြည့်ရှုရန်အတွက် မန်ဘာကြေး (5,000) ကျပ်ဖြင့် Telegram Channel သို့ ဝင်ရောက်နိုင်ပါပြီ။</p>
+        <a href="https://t.me/Aunggyi1200" target="_blank" class="vip-btn">⭐ VIP ဝင်ရန်နှိပ်ပါ ⭐</a>
+    </div>
+    
+    <div class="wrapper" id="mainMenu">
+        <div class="menu-card">
+            <h3>May Noe</h3>
+            <button class="btn btn-site1" onclick="openSite('site1')">ကြည့်ရန်</button>
+        </div>
+        <div class="menu-card">
+            <h3>အပြာစာပေ</h3>
+            <button class="btn btn-site2" onclick="openSite('site2')">ကြည့်ရန်</button>
+        </div>
+        <div class="menu-card">
+            <h3>JAV</h3>
+            <button class="btn btn-site3" onclick="openSite('site3')">ကြည့်ရန်</button>
+        </div>
+        <div class="menu-card">
+            <h3>တရုတ်</h3>
+            <button class="btn btn-site4" onclick="openSite('site4')">ကြည့်ရန်</button>
+        </div>
+        <!-- ငါးခုမြောက် ဆိုက် -->
+        <div class="menu-card">
+            <h3>ရုပ်ပြ</h3>
+            <button class="btn btn-site5" onclick="openSite('site5')">ကြည့်ရန်</button>
+        </div>
+    </div>
+
+    <!-- Site 1 -->
+    <div id="site1" class="view-container">
+        <div class="view-header">
+            <button class="back-btn" onclick="goBack()">&#10094;</button>
+            <span>May Noe</span>
+        </div>
+        <div class="view-body"><iframe src="https://maynoe.com/"></iframe></div>
+    </div>
+
+    <!-- Site 2 -->
+    <div id="site2" class="view-container">
+        <div class="view-header">
+            <button class="back-btn" onclick="goBack()">&#10094;</button>
+            <span>အပြာစာပေ</span>
+        </div>
+        <div class="view-body"><iframe src="https://apyarpdf.com/book-lists/"></iframe></div>
+    </div>
+
+    <!-- Site 3 -->
+    <div id="site3" class="view-container">
+        <div class="view-header">
+            <button class="back-btn" onclick="goBack()">&#10094;</button>
+            <span>JAV</span>
+        </div>
+        <div class="view-body"><iframe src="https://javquick.com/"></iframe></div>
+    </div>
+
+    <!-- Site 4 -->
+    <div id="site4" class="view-container">
+        <div class="view-header">
+            <button class="back-btn" onclick="goBack()">&#10094;</button>
+            <span>တရုတ်</span>
+        </div>
+        <div class="view-body"><iframe src="https://funlove.info/"></iframe></div>
+    </div>
+
+    <!-- Site 5 -->
+    <div id="site5" class="view-container">
+        <div class="view-header">
+            <button class="back-btn" onclick="goBack()">&#10094;</button>
+            <span>ရုပ်ပြ</span>
+        </div>
+        <div class="view-body"><iframe src="https://adult.manhwamyanmar.com/"></iframe></div>
+    </div>
+
+    <script>
+        function openSite(siteId) {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById(siteId).style.display = 'flex';
+        }
+
+        function goBack() {
+            const views = document.querySelectorAll('.view-container');
+            views.forEach(view => view.style.display = 'none');
+            document.getElementById('mainMenu').style.display = 'grid';
+        }
+    </script>
+
+</body>
+</html>
