@@ -15,30 +15,76 @@
             --border-color: rgba(255, 255, 255, 0.1);
         }
 
+        /* Theme Styles */
+        body.theme-neon {
+            --primary-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            --vip-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --bg-color: #050b14;
+            --card-bg: rgba(10, 25, 47, 0.8);
+        }
+
+        body.theme-gold {
+            --primary-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            --vip-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+            --bg-color: #1a120b;
+            --card-bg: rgba(43, 30, 20, 0.8);
+        }
+
         body {
             font-family: 'Pyidaungsu', sans-serif, system-ui;
             background: var(--bg-color);
             color: var(--text-color);
             text-align: center;
-            padding: 30px 15px;
+            padding: 20px 15px;
             margin: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             box-sizing: border-box;
+            transition: background 0.3s ease;
+        }
+
+        .top-bar {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
         h2 {
             color: #f8fafc;
-            margin-bottom: 20px;
-            font-size: 26px;
+            margin: 0;
+            font-size: 24px;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* VIP Banner */
+        /* Theme Switcher Buttons */
+        .theme-switcher {
+            display: flex;
+            gap: 6px;
+        }
+
+        .theme-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* VIP Banner Main */
         .vip-banner {
             background: var(--vip-gradient);
             color: white;
@@ -57,6 +103,64 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             animation: pulseGlow 2s infinite alternate;
             box-sizing: border-box;
+        }
+
+        /* Embedded Dynamic Running Text Bar (TV Ticker Style) */
+        .embed-vip-bar {
+            background: var(--vip-gradient);
+            color: white;
+            width: 100%;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-wrapper {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 15s linear infinite;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .embed-vip-btn {
+            background: #ffffff;
+            color: #d32f2f;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            margin-right: 8px;
+            margin-left: 8px;
+            z-index: 2;
+            transition: transform 0.2s;
+        }
+
+        .embed-vip-btn:hover {
+            transform: scale(1.05);
         }
 
         @keyframes pulseGlow {
@@ -165,7 +269,7 @@
             background: rgba(245, 175, 25, 0.05);
         }
         .btn-vip-preview { 
-            background: linear-gradient(135deg, #f5af19, #f12711); 
+            background: var(--vip-gradient); 
             box-shadow: 0 4px 15px rgba(241, 39, 17, 0.4); 
         }
 
@@ -291,6 +395,7 @@
             object-fit: contain;
             display: block;
             background: #000;
+            cursor: zoom-in;
         }
 
         .vip-gallery-item span {
@@ -301,6 +406,40 @@
             font-size: 14px;
             font-weight: bold;
             border-top: 1px solid var(--border-color);
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox-modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
 
         @media (max-width: 768px) {
@@ -319,7 +458,14 @@
 </head>
 <body>
 
-    <h2>ပျော်ပျော်ကြီး အမှောင်ကမ္ဘာ</h2>
+    <div class="top-bar">
+        <h2>ပျော်ပျော်ကြီး အမှောင်ကမ္ဘာ</h2>
+        <div class="theme-switcher">
+            <button class="theme-btn" onclick="setTheme('')">Dark</button>
+            <button class="theme-btn" onclick="setTheme('theme-neon')">Neon</button>
+            <button class="theme-btn" onclick="setTheme('theme-gold')">Gold</button>
+        </div>
+    </div>
     
     <!-- VIP Banner -->
     <div class="vip-banner" id="vipBanner">
@@ -364,6 +510,12 @@
             <button class="back-btn" onclick="goBack()">&#10094;</button>
             <span>May Noe</span>
         </div>
+        <div class="embed-vip-bar">
+            <div class="ticker-wrapper">
+                <div class="ticker-text">🔥 ဒီထက်မိုက်သော TikTok အကိတ်၊ ကျောင်းသူလေးများ၏ ပေါက်ကြားမှုများကို ကြည့်ရှုရန် မန်ဘာကြေး (5,000) ကျပ်ဖြင့် Telegram Channel သို့ ဝင်ရောက်နိုင်ပါပြီ။ 🔥</div>
+            </div>
+            <a href="https://t.me/Aunggyi1200" target="_blank" class="embed-vip-btn">VIP ဝင်မည်</a>
+        </div>
         <div class="loader"></div>
         <div class="view-body"><iframe src="https://maynoe.com/" onload="this.previousElementSibling.style.display='none'"></iframe></div>
     </div>
@@ -372,6 +524,12 @@
         <div class="view-header">
             <button class="back-btn" onclick="goBack()">&#10094;</button>
             <span>အပြာစာပေ</span>
+        </div>
+        <div class="embed-vip-bar">
+            <div class="ticker-wrapper">
+                <div class="ticker-text">🔥 ဒီထက်မိုက်သော TikTok အကိတ်၊ ကျောင်းသူလေးများ၏ ပေါက်ကြားမှုများကို ကြည့်ရှုရန် မန်ဘာကြေး (5,000) ကျပ်ဖြင့် Telegram Channel သို့ ဝင်ရောက်နိုင်ပါပြီ။ 🔥</div>
+            </div>
+            <a href="https://t.me/Aunggyi1200" target="_blank" class="embed-vip-btn">VIP ဝင်မည်</a>
         </div>
         <div class="loader"></div>
         <div class="view-body"><iframe src="https://apyarpdf.com/book-lists/" onload="this.previousElementSibling.style.display='none'"></iframe></div>
@@ -382,6 +540,12 @@
             <button class="back-btn" onclick="goBack()">&#10094;</button>
             <span>JAV</span>
         </div>
+        <div class="embed-vip-bar">
+            <div class="ticker-wrapper">
+                <div class="ticker-text">🔥 ဒီထက်မိုက်သော TikTok အကိတ်၊ ကျောင်းသူလေးများ၏ ပေါက်ကြားမှုများကို ကြည့်ရှုရန် မန်ဘာကြေး (5,000) ကျပ်ဖြင့် Telegram Channel သို့ ဝင်ရောက်နိုင်ပါပြီ။ 🔥</div>
+            </div>
+            <a href="https://t.me/Aunggyi1200" target="_blank" class="embed-vip-btn">VIP ဝင်မည်</a>
+        </div>
         <div class="loader"></div>
         <div class="view-body"><iframe src="https://javquick.com/" onload="this.previousElementSibling.style.display='none'"></iframe></div>
     </div>
@@ -391,6 +555,12 @@
             <button class="back-btn" onclick="goBack()">&#10094;</button>
             <span>တရုတ်</span>
         </div>
+        <div class="embed-vip-bar">
+            <div class="ticker-wrapper">
+                <div class="ticker-text">🔥 ဒီထက်မိုက်သော TikTok အကိတ်၊ ကျောင်းသူလေးများ၏ ပေါက်ကြားမှုများကို ကြည့်ရှုရန် မန်ဘာကြေး (5,000) ကျပ်ဖြင့် Telegram Channel သို့ ဝင်ရောက်နိုင်ပါပြီ။ 🔥</div>
+            </div>
+            <a href="https://t.me/Aunggyi1200" target="_blank" class="embed-vip-btn">VIP ဝင်မည်</a>
+        </div>
         <div class="loader"></div>
         <div class="view-body"><iframe src="https://funlove.info/" onload="this.previousElementSibling.style.display='none'"></iframe></div>
     </div>
@@ -399,6 +569,12 @@
         <div class="view-header">
             <button class="back-btn" onclick="goBack()">&#10094;</button>
             <span>ရုပ်ပြ</span>
+        </div>
+        <div class="embed-vip-bar">
+            <div class="ticker-wrapper">
+                <div class="ticker-text">🔥 ဒီထက်မိုက်သော TikTok အကိတ်၊ ကျောင်းသူလေးများ၏ ပေါက်ကြားမှုများကို ကြည့်ရှုရန် မန်ဘာကြေး (5,000) ကျပ်ဖြင့် Telegram Channel သို့ ဝင်ရောက်နိုင်ပါပြီ။ 🔥</div>
+            </div>
+            <a href="https://t.me/Aunggyi1200" target="_blank" class="embed-vip-btn">VIP ဝင်မည်</a>
         </div>
         <div class="loader"></div>
         <div class="view-body"><iframe src="https://adult.manhwamyanmar.com/" onload="this.previousElementSibling.style.display='none'"></iframe></div>
@@ -415,25 +591,31 @@
                 <h3 style="color: #f5af19;">🔥 VIP အဖွဲ့ဝင်များ ကြည့်ရှုနိုင်မည့် နမူနာများ 🔥</h3>
                 <div class="vip-gallery-grid">
                     <div class="vip-gallery-item">
-                        <img src="https://i.ibb.co/MkyvcGMb/Screenshot-2026-08-14-22-15-46-798-org-telegram-messenger.jpg" alt="VIP Preview 1">
+                        <img src="https://i.ibb.co/MkyvcGMb/Screenshot-2026-08-14-22-15-46-798-org-telegram-messenger.jpg" alt="VIP Preview 1" onclick="openLightbox(this.src)">
                         <span>PPG TikTik Girl Vip</span>
                     </div>
                     <div class="vip-gallery-item">
-                        <img src="https://i.ibb.co/9mYQyj7G/Screenshot-2026-08-14-22-16-06-199-org-telegram-messenger.jpg" alt="VIP Preview 2">
+                        <img src="https://i.ibb.co/9mYQyj7G/Screenshot-2026-08-14-22-16-06-199-org-telegram-messenger.jpg" alt="VIP Preview 2" onclick="openLightbox(this.src)">
                         <span>ရှယ်ပြ မမ</span>
                     </div>
                     <div class="vip-gallery-item">
-                        <img src="https://i.ibb.co/39CRRygK/Screenshot-2026-08-14-22-15-53-876-org-telegram-messenger.jpg" alt="VIP Preview 3">
+                        <img src="https://i.ibb.co/39CRRygK/Screenshot-2026-08-14-22-15-53-876-org-telegram-messenger.jpg" alt="VIP Preview 3" onclick="openLightbox(this.src)">
                         <span>ပေါက်ကြား</span>
                     </div>
                     <div class="vip-gallery-item">
-                        <img src="https://i.ibb.co/4nG4G5xy/Screenshot-2026-08-14-22-16-16-860-org-telegram-messenger.jpg" alt="VIP Preview 4">
+                        <img src="https://i.ibb.co/4nG4G5xy/Screenshot-2026-08-14-22-16-16-860-org-telegram-messenger.jpg" alt="VIP Preview 4" onclick="openLightbox(this.src)">
                         <span>အလန်းဇယား</span>
                     </div>
                 </div>
-                <a href="https://t.me/Aunggyi1200" target="_blank" class="vip-btn" style="background: linear-gradient(135deg, #f5af19, #f12711); color: white;">⭐ Telegram VIP ဝင်ရန် နှိပ်ပါ ⭐</a>
+                <a href="https://t.me/Aunggyi1200" target="_blank" class="vip-btn" style="background: var(--vip-gradient); color: white;">⭐ Telegram VIP ဝင်ရန် နှိပ်ပါ ⭐</a>
             </div>
         </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+        <button class="lightbox-close">&times;</button>
+        <img id="lightboxImg" src="" alt="Zoomed Image">
     </div>
 
     <script>
@@ -442,12 +624,12 @@
         function openSite(siteId) {
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('vipBanner').style.display = 'none';
+            document.querySelector('.top-bar').style.display = 'none';
             
             const targetView = document.getElementById(siteId);
             targetView.style.display = 'flex';
             currentActiveView = siteId;
             
-            // Push history state for back button support
             history.pushState({page: siteId}, 'View', '#' + siteId);
         }
 
@@ -458,7 +640,32 @@
             }
             document.getElementById('mainMenu').style.display = 'grid';
             document.getElementById('vipBanner').style.display = 'flex';
+            document.querySelector('.top-bar').style.display = 'flex';
         }
+
+        // Lightbox Functions
+        function openLightbox(imgSrc) {
+            document.getElementById('lightboxModal').style.display = 'flex';
+            document.getElementById('lightboxImg').src = imgSrc;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        // Theme Switcher Function
+        function setTheme(themeName) {
+            document.body.className = themeName;
+            localStorage.setItem('preferred_theme', themeName);
+        }
+
+        // Load saved theme
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('preferred_theme');
+            if (savedTheme) {
+                document.body.className = savedTheme;
+            }
+        };
 
         // Handle Browser Back Button
         window.onpopstate = function(event) {
@@ -467,6 +674,7 @@
                 currentActiveView = null;
                 document.getElementById('mainMenu').style.display = 'grid';
                 document.getElementById('vipBanner').style.display = 'flex';
+                document.querySelector('.top-bar').style.display = 'flex';
             }
         };
     </script>
