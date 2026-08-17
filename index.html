@@ -736,7 +736,7 @@
     <div id="siteChatGirlsList" class="view-container">
         <div class="view-header">
             <button class="back-btn" onclick="goBack()">&#10094;</button>
-            <span>Chat Girl မ်ား</span>
+            <span>Chat Girl များ</span>
         </div>
         <div class="view-body">
             <div class="chat-girls-list">
@@ -746,11 +746,21 @@
                     <h4>၁။ Su Hnin (Chat Girl)</h4>
                     <span class="arrow">&#10095;</span>
                 </div>
+
+               <div class="chat-girl-name-card" onclick="openSite('girlProfile2')">
+                    <h4>၂။ သက်တန့်ကလေး (Chat Girl)</h4>
+                    <span class="arrow">&#10095;</span>
+              </div>
+
+                            <div class="chat-girl-name-card" onclick="openSite('girlProfile3')">
+                    <h4>၃။ Than Xin Phyo (Chat Girl)</h4>
+                    <span class="arrow">&#10095;</span>
+              </div>
             </div>
         </div>
     </div>
 
-    <!-- ၂။ Profile 1 Detail (အမည်ကိုနှိပ်လျှင် အပေါ်မှာ Chat ရန် Button + Frame ၁ ခုထဲတွင် ပုံ ၄ ပုံပြမည့် View) -->
+    <!-- ၂။ Profile 1 Detail - Su Hnin -->
     <div id="girlProfile1" class="view-container">
         <div class="view-header">
             <button class="back-btn" onclick="openSite('siteChatGirlsList')">&#10094;</button>
@@ -758,10 +768,8 @@
         </div>
         <div class="view-body">
             <div class="chat-profile-container">
-                <!-- အပေါ်မှ Chat ရန် Button -->
                 <a href="https://t.me/CGirlALiNA" target="_blank" class="chat-main-btn">💬 Su Hnin နှင့် Chat ရန် နှိပ်ပါ</a>
 
-                <!-- Frame တစ်ခုတည်းအတွင်း ဓာတ်ပုံ ၄ ပုံပြသည့် Grid -->
                 <div class="single-photo-frame">
                     <div class="four-photo-grid">
                         <img src="https://i.ibb.co/H8qY9D7/photo-2026-08-17-11-49-53-2.jpg" alt="Photo 1" onclick="openLightbox(this.src)">
@@ -774,6 +782,53 @@
         </div>
     </div>
 
+        <div id="girlProfile2" class="view-container">
+        <div class="view-header">
+            <button class="back-btn" onclick="openSite('siteChatGirlsList')">&#10094;</button>
+            <span>သက်တန့်ကလေး Profile</span>
+        </div>
+        <div class="view-body">
+            <div class="chat-profile-container">
+                <!-- Telegram link ပြောင်းရန် -->
+                <a href="https://t.me/Hanimay78" target="_blank" class="chat-main-btn">💬 သက်တန့်ကလေး နှင့် Chat ရန် နှိပ်ပါ</a>
+
+                <div class="single-photo-frame">
+                    <div class="four-photo-grid">
+                        <!-- ပုံ URL များကို မိမိနှစ်သက်ရာ ပုံများနှင့် လဲလှယ်နိုင်ပါသည် -->
+                        <img src="https://i.ibb.co/1ty4JrgV/Screenshot-2026-08-17-131001.png" alt="Photo 1" onclick="openLightbox(this.src)">
+                        <img src="https://i.ibb.co/d4FdyjZ0/Screenshot-2026-08-17-131232.png" alt="Photo 2" onclick="openLightbox(this.src)">
+                        <img src="https://i.ibb.co/LDLB5D3W/Screenshot-2026-08-17-131023.png" alt="Photo 3" onclick="openLightbox(this.src)">
+                        <img src="https://i.ibb.co/YF3MyqXC/Screenshot-2026-08-17-131031.png" alt="Photo 4" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="girlProfile3" class="view-container">
+        <div class="view-header">
+            <button class="back-btn" onclick="openSite('siteChatGirlsList')">&#10094;</button>
+            <span>Than Zin Phyo Profile</span>
+        </div>
+        <div class="view-body">
+            <div class="chat-profile-container">
+                <!-- Telegram link ပြောင်းရန် -->
+                <a href="https://t.me/Zin28037" target="_blank" class="chat-main-btn">💬 Than Zin Phyo နှင့် Chat ရန် နှိပ်ပါ</a>
+
+                <div class="single-photo-frame">
+                    <div class="four-photo-grid">
+                        <!-- ပုံ URL များကို မိမိနှစ်သက်ရာ ပုံများနှင့် လဲလှယ်နိုင်ပါသည် -->
+                        <img src="https://i.ibb.co/fYQJwQ7P/Screenshot-2026-08-17-132859.png" alt="Photo 1" onclick="openLightbox(this.src)">
+                        <img src="https://i.ibb.co/Mxh2KwRM/Screenshot-2026-08-17-132914.png" alt="Photo 2" onclick="openLightbox(this.src)">
+                        <img src="https://i.ibb.co/PzfWCPcd/Screenshot-2026-08-17-132923.png" alt="Photo 3" onclick="openLightbox(this.src)">
+                        <img src="https://i.ibb.co/pjSZbmGR/Screenshot-2026-08-17-132935.png" alt="Photo 4" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Lightbox Modal -->
     <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
         <button class="lightbox-close">&times;</button>
@@ -784,7 +839,6 @@
         let currentActiveView = null;
 
         function openSite(siteId) {
-            // အရင်ပွင့်နေသည့် View ကို ပိတ်ရန်
             if (currentActiveView) {
                 document.getElementById(currentActiveView).style.display = 'none';
             }
