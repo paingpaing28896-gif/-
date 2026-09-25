@@ -213,6 +213,61 @@
             box-sizing: border-box;
         }
 
+        /* FREE CHANNEL Advertisement */
+        .free-channel-banner {
+            width: 100%;
+            max-width: 980px;
+            margin: 0 auto 20px;
+            padding: 18px 22px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #0f5132 0%, #198754 50%, #43c98b 100%);
+            border: 1px solid rgba(255,255,255,.25);
+            box-shadow: 0 10px 28px rgba(0,0,0,.35), 0 0 24px rgba(67,201,139,.18);
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        .free-channel-icon {
+            font-size: 30px;
+            line-height: 1;
+        }
+        .free-channel-content {
+            text-align: center;
+        }
+        .free-channel-content h3 {
+            margin: 0 0 5px;
+            font-size: 22px;
+            font-weight: 700;
+            text-shadow: 0 2px 7px rgba(0,0,0,.35);
+        }
+        .free-channel-content p {
+            margin: 0;
+            font-size: 14px;
+            opacity: .95;
+        }
+        .free-channel-btn {
+            display: inline-block;
+            padding: 11px 22px;
+            border-radius: 50px;
+            background: #fff;
+            color: #0f5132;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 5px 16px rgba(0,0,0,.22);
+            transition: transform .2s ease, filter .2s ease;
+        }
+        .free-channel-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            filter: brightness(1.05);
+        }
+
         .menu-card {
             background: var(--card-bg);
             backdrop-filter: blur(15px);
@@ -810,6 +865,140 @@ body::after { right: 0; transform: scaleX(-1); }
     50% { opacity: 1; transform: scale(1.2) translateY(-5px); }
 }
 
+
+    /* =========================================================
+       THEME SWITCHER FIX
+       Keep Thadingyut as the default, but make Dark / Neon / Gold
+       visibly override the festival design.
+       ========================================================= */
+
+    body:not(.theme-neon):not(.theme-gold) {
+        --primary-gradient: linear-gradient(135deg, #8f5b16 0%, #d4af37 45%, #ffe9a3 100%);
+        --vip-gradient: linear-gradient(135deg, #8b5a00 0%, #d4af37 50%, #fff0a6 100%);
+        --chat-gradient: linear-gradient(135deg, #7b3f00 0%, #d88916 50%, #ffd76a 100%);
+        --bg-color: #160d06;
+        --card-bg: rgba(48, 29, 12, 0.78);
+        --text-color: #fff8df;
+        --border-color: rgba(255, 215, 106, 0.28);
+    }
+
+    /* DARK */
+    body:not(.theme-neon):not(.theme-gold) .free-channel-banner {
+        background: linear-gradient(135deg, #0f5132 0%, #198754 50%, #43c98b 100%);
+    }
+
+    /* NEON */
+    body.theme-neon {
+        --primary-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+        --vip-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        --chat-gradient: linear-gradient(135deg, #00e5ff 0%, #7c4dff 100%);
+        --bg-color: #050b14;
+        --card-bg: rgba(10, 25, 47, 0.88);
+        --text-color: #eaf8ff;
+        --border-color: rgba(0, 210, 255, 0.3);
+        background:
+            radial-gradient(circle at 50% -10%, rgba(0,198,255,.18), transparent 38%),
+            radial-gradient(circle at 10% 30%, rgba(0,114,255,.12), transparent 28%),
+            linear-gradient(180deg, #071426 0%, #02060d 100%);
+    }
+
+    body.theme-neon .top-bar h2,
+    body.theme-neon .menu-card h3,
+    body.theme-neon .view-header span {
+        color: #bff6ff;
+        text-shadow: 0 0 10px rgba(0,210,255,.65);
+    }
+
+    body.theme-neon .vip-banner {
+        background:
+            radial-gradient(circle at 50% 0%, rgba(255,255,255,.2), transparent 42%),
+            linear-gradient(135deg, #005b9f 0%, #0072ff 45%, #00c6ff 100%);
+        border-color: rgba(0,230,255,.45);
+        box-shadow: 0 0 35px rgba(0,198,255,.25);
+    }
+
+    body.theme-neon .menu-card {
+        background: linear-gradient(145deg, rgba(8,35,64,.9), rgba(3,12,25,.94));
+        border-color: rgba(0,210,255,.25);
+    }
+
+    body.theme-neon .btn,
+    body.theme-neon .btn-site1,
+    body.theme-neon .btn-site2,
+    body.theme-neon .btn-site3,
+    body.theme-neon .btn-site4,
+    body.theme-neon .btn-site5,
+    body.theme-neon .btn-vip-preview,
+    body.theme-neon .btn-chat-girls,
+    body.theme-neon .chat-main-btn {
+        background: var(--primary-gradient);
+        color: #03101c;
+        box-shadow: 0 0 18px rgba(0,198,255,.3);
+    }
+
+    body.theme-neon .embed-vip-bar {
+        background: linear-gradient(90deg, #004b80, #0072ff, #00a8d6);
+    }
+
+    /* GOLD */
+    body.theme-gold {
+        --primary-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        --vip-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+        --chat-gradient: linear-gradient(135deg, #ff8a00 0%, #ffd200 100%);
+        --bg-color: #1a120b;
+        --card-bg: rgba(43, 30, 20, 0.88);
+        --text-color: #fff8e1;
+        --border-color: rgba(255, 210, 0, 0.3);
+        background:
+            radial-gradient(circle at 50% -10%, rgba(255,210,0,.2), transparent 38%),
+            radial-gradient(circle at 10% 30%, rgba(247,151,30,.1), transparent 28%),
+            linear-gradient(180deg, #241507 0%, #100a05 100%);
+    }
+
+    body.theme-gold .top-bar h2,
+    body.theme-gold .menu-card h3,
+    body.theme-gold .view-header span {
+        color: #ffe9a3;
+        text-shadow: 0 0 9px rgba(255,210,0,.5);
+    }
+
+    body.theme-gold .vip-banner {
+        background:
+            radial-gradient(circle at 50% 0%, rgba(255,248,210,.3), transparent 42%),
+            linear-gradient(135deg, #9c5b00 0%, #f7971e 45%, #ffd200 100%);
+        border-color: rgba(255,235,166,.55);
+        box-shadow: 0 0 35px rgba(255,184,48,.2);
+    }
+
+    body.theme-gold .menu-card {
+        background: linear-gradient(145deg, rgba(79,45,13,.9), rgba(30,17,7,.94));
+        border-color: rgba(255,214,105,.3);
+    }
+
+    body.theme-gold .btn,
+    body.theme-gold .btn-site1,
+    body.theme-gold .btn-site2,
+    body.theme-gold .btn-site3,
+    body.theme-gold .btn-site4,
+    body.theme-gold .btn-site5,
+    body.theme-gold .btn-vip-preview,
+    body.theme-gold .btn-chat-girls,
+    body.theme-gold .chat-main-btn {
+        background: var(--primary-gradient);
+        color: #3b2100;
+    }
+
+    body.theme-gold .embed-vip-bar {
+        background: linear-gradient(90deg, #8f5200, #d89000, #ffd200);
+    }
+
+    /* Theme button active state */
+    .theme-btn.active {
+        transform: scale(1.04);
+        border-color: rgba(255,255,255,.7);
+        box-shadow: 0 0 12px rgba(255,255,255,.2);
+    }
+
 </style>
 </head>
 <body>
@@ -852,6 +1041,16 @@ body::after { right: 0; transform: scaleX(-1); }
         <a href="https://t.me/Aunggyi1200" target="_blank" class="vip-btn">⭐ VIP ဝင်ရန်နှိပ်ပါ ⭐</a>
     </div>
     
+    <!-- FREE CHANNEL Advertisement -->
+    <div class="free-channel-banner">
+        <div class="free-channel-icon">🎁</div>
+        <div class="free-channel-content">
+            <h3>🔥 FREE CHANNEL 🔥</h3>
+            <p>အခမဲ့ Channel ကို ဝင်ရောက်ကြည့်ရှုနိုင်ပါပြီ</p>
+        </div>
+        <a href="https://t.me/+Kn5o8qAFFA81M2E1" target="_blank" class="free-channel-btn">🚀 FREE CHANNEL ဝင်ရန်</a>
+    </div>
+
     <!-- Menu Cards -->
     <div class="wrapper" id="mainMenu">
         <div class="menu-card">
@@ -1140,16 +1339,23 @@ body::after { right: 0; transform: scaleX(-1); }
 
         // Theme Switcher Function
         function setTheme(themeName) {
-            document.body.className = themeName;
-            localStorage.setItem('preferred_theme', themeName);
+            document.body.className = themeName || '';
+            localStorage.setItem('preferred_theme', themeName || '');
+
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.theme-btn');
+            if (!themeName && buttons[0]) buttons[0].classList.add('active');
+            if (themeName === 'theme-neon' && buttons[1]) buttons[1].classList.add('active');
+            if (themeName === 'theme-gold' && buttons[2]) buttons[2].classList.add('active');
         }
 
         // Load saved theme
         window.onload = function() {
-            const savedTheme = localStorage.getItem('preferred_theme');
-            if (savedTheme) {
-                document.body.className = savedTheme;
-            }
+            const savedTheme = localStorage.getItem('preferred_theme') || '';
+            setTheme(savedTheme);
         };
 
         // Handle Browser Back Button
